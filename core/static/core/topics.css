@@ -1,0 +1,23 @@
+body {
+    background-color: #e7e7e7;
+}
+.column {
+    color: black;
+}
+.column:nth-of-type(4n + 0) .tile {
+    border: 1px solid #8f9bef;
+}
+.column:nth-of-type(4n + 1) .tile {
+    border: 1px solid #61e8e1;
+}
+.column:nth-of-type(4n + 2) .tile {
+    border: 1px solid #f25757;
+}
+.column:nth-of-type(4n + 3) .tile {
+    border: 1px solid #ffbc00;
+}
+
+.tile:hover {
+    background-color: white;
+    transition: background-color .5s;
+}

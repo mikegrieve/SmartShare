@@ -1,0 +1,6 @@
+<h1>{{ topic }}</h1>
+<ul>
+{% for subtopic in topic.item_set.all %}
+    <li>{{ subtopic }}</li>
+{% endfor %}
+</ul>
