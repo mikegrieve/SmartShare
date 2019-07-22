@@ -2,14 +2,18 @@
 {% load static %}
 {% block content %}
 
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
 <h1>Create a new item</h1>
 <form action="{% url 'core:create' %}" method="post">
 {% csrf_token %}
-    <input type="text" name="name" >
+    <input type="text" name="name">
+    <select name="topic">
     {% for topic in topic_list %}
-        <input type="radio" name="topic" 
+        <option value="{{topic.id}}">{{topic.name}}</option>
     {% endfor %}
-<input type="submit">
+    </select>
+    <input type="submit" value="Create">
 </form>
 
 {% endblock %}
