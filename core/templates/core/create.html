@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Create a new item</h1>
+<form action="{% url 'core:create' %}" method="post">
+{% csrf_token %}
+    <input type="text" name="name" >
+    {% for topic in topic_list %}
+        <input type="radio" name="topic" 
+    {% endfor %}
+<input type="submit">
+</form>
+
+{% endblock %}

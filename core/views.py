@@ -1,3 +1,6 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+from django.views.generic.edit import CreateView
 from django.shortcuts import render
 from django.http import Http404
 
@@ -16,3 +19,11 @@ def detail(request, topic_id):
     except Topic.DoesNotExist:
         raise Http404("Topic does not exist")
     return render(request, 'core/detail.html', {'topic': topic}) 
+
+def create(request):
+    if request.method == 'GET':
+        return render(request, 'core/create.html', {})
+    elif request.method == 'POST':
+        print(request['POST'])
+        return HttpResponseRedirect('/core')
+
