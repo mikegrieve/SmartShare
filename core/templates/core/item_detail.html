@@ -2,21 +2,18 @@
 {% load static %}
 {% block content %}
 
-<h1>{{ item }}</h1>
+<link rel="stylesheet" type="text/css" href="{% static 'core/item_detail.css' %}">
 
-<h3>Rating: {{ item.rating }}</h3>
+<h2>{{ item }}</h1>
 
-<h3>Topic: {{ item.topic }}</h3>
+<h3>Topic: {{ item.topic }}, Rating: {{ item.rating }}</h3>
 
 <img src="{{ item.img_src }}" width=100><br>
 
-<a href="{{ item.link }}">Link</a>
+<a href="{{ item.link }}" target="_blank">Go to item</a>
 
-<p>{{ item.description }}</p>
-
-
-
-
-
+<div class="description_container">
+    <p>{{ item.description }}</p>
+</div>
 
 {% endblock %}

@@ -1,0 +1,9 @@
+body {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+.description_container {
+    margin: auto;
+    width: 40%;
+}
