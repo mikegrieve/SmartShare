@@ -6,12 +6,12 @@
 
 {% if topic_list %}
     {% for topic in topic_list %}
-        <a href="{% url 'core:detail' topic.id %}">{{ topic }}</a><br>
+        <a href="{% url 'core:topic_detail' topic.id %}">{{ topic }}</a><br>
     {% endfor %}
 {% else %}
     <p>No topics are available.</p>
 {% endif %}
 
-<a href="{% url 'core:create' %}">Create</a>
+<a href="{% url 'core:create_item' %}">Create</a>
 
 {% endblock %}

@@ -5,15 +5,31 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <h1>Create a new item</h1>
-<form action="{% url 'core:create' %}" method="post">
+<!-- <form action="{% url 'core:create_item' %}" method="post">
 {% csrf_token %}
-    <input type="text" name="name">
+    <label for="name">Name</label>
+    <input type="text" name="name"><br>
+    <label for="topic">Topic</label>
     <select name="topic">
     {% for topic in topic_list %}
         <option value="{{topic.id}}">{{topic.name}}</option>
     {% endfor %}
-    </select>
+    </select><br>
+    <label for="description">Description</label><br>
+    <textarea id="description" name="description" rows="5" cols="30"></textarea><br>
+    <label for="img_src">Image URL</label>
+    <input type="url" name="img_src"><br>
+    <label for="link">Link to Item</label>
+    <input type="url" name="link"><br>
+    <label for="rating">Rating</label>
+    <input type="number" name="rating"><br>
     <input type="submit" value="Create">
+</form> -->
+
+<form action="{% url 'core:create_item' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Submit">
 </form>
 
 {% endblock %}

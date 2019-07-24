@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>{{ item }}</h1>
+
+<h3>Rating: {{ item.rating }}</h3>
+
+<h3>Topic: {{ item.topic }}</h3>
+
+<img src="{{ item.img_src }}" width=100><br>
+
+<a href="{{ item.link }}">Link</a>
+
+<p>{{ item.description }}</p>
+
+
+
+
+
+
+{% endblock %}
