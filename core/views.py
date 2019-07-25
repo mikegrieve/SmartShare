@@ -34,8 +34,10 @@ def itemDetail(request, item_id):
     if request.method == 'POST':
         form = NewReviewForm(request.POST)
         if form.is_valid():
-            review = form.save()
-            return redirect('/core')
+            review = form.save(commit = False)
+            review.item = item
+            review.save()
+            return redirect('/core/item/{}'.format(item.id))
 
     form = NewReviewForm()
     context = {

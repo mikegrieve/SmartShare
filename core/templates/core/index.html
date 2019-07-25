@@ -4,6 +4,12 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'core/topics.css' %}">
 
+{% if user.is_authenticated %}
+<p>Hi {{user.username}} <a href="{% url 'logout' %}">Logout</a></p>
+{% else %}
+<p>Please login <a href="{% url 'login' %}">login</a></p>
+{% endif %}
+
 {% if topic_list %}
     {% for topic in topic_list %}
         <a href="{% url 'core:topic_detail' topic.id %}">{{ topic }}</a><br>

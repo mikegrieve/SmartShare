@@ -9,4 +9,4 @@ class NewItemForm(forms.ModelForm):
 class NewReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ['item', 'user', 'content', 'score']
+        fields = ['user', 'content', 'score']
