@@ -122,3 +122,5 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/core/'
 LOGOUT_REDIRECT_URL = '/core'
+
+AUTH_USER_MODEL = 'core.CustomUser'

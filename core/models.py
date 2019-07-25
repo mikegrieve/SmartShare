@@ -1,5 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
+
+class CustomUser(AbstractUser):
+    pass
+
+    def __str__(self):
+        return self.username
 
 class Topic(models.Model):
     name = models.CharField(max_length=64)
@@ -19,7 +25,7 @@ class Item(models.Model):
 
 class Review(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     content = models.CharField(max_length=280, blank=True)
     score = models.PositiveSmallIntegerField(null=True, blank=True)
     def __str__(self):

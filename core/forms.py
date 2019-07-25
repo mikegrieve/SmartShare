@@ -1,5 +1,18 @@
 from django import forms
-from .models import Topic, Item, Review
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from .models import CustomUser, Topic, Item, Review
+
+class CustomUserCreationForm(UserCreationForm):
+
+    class Meta(UserCreationForm):
+        model = CustomUser
+        fields = ('username', 'email')
+
+class CustomUserChangeForm(UserChangeForm):
+
+    class Meta(UserChangeForm):
+        model = CustomUser
+        fields = ('username', 'email')
 
 class NewItemForm(forms.ModelForm):
     class Meta:
