@@ -1,12 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import Http404
 
-from .forms import NewItemForm
-from .models import Topic, Item
+from .forms import NewItemForm, NewReviewForm
+from .models import Topic, Item, Review
 
 def index(request):
     topic_list = Topic.objects.all()
@@ -31,6 +29,19 @@ def createItem(request):
     return render(request, 'core/create.html', {'form': form})
     
 
-class ItemDetail(DetailView):
-    model = Item
-    template_name = 'core/item_detail.html'
+def itemDetail(request, item_id):
+    item = get_object_or_404(Item, pk=item_id)
+    if request.method == 'POST':
+        form = NewReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save()
+            return redirect('/core')
+
+    form = NewReviewForm()
+    context = {
+        'item': item,
+        'reviews': item.review_set,
+        'form': form
+    }
+
+    return render(request, 'core/item_detail.html', context)

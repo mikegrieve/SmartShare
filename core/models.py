@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Topic(models.Model):
     name = models.CharField(max_length=64)
@@ -15,3 +16,11 @@ class Item(models.Model):
     up_votes = models.IntegerField(default=0)
     def __str__(self):
         return self.name
+
+class Review(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.CharField(max_length=280, blank=True)
+    score = models.PositiveSmallIntegerField(null=True, blank=True)
+    def __str__(self):
+        return '{} - {}'.format(self.user.username, self.item.name)
