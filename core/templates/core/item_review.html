@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Write a review</h1>
+
+<form action="{% url 'core:item_review' item.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Post">
+</form>
+
+{% endblock %}

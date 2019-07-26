@@ -18,12 +18,6 @@
 
 <h4>Reviews</h4>
 
-<form action="{% url 'core:item_detail' item.id %}" method="post">
-    {% csrf_token %}
-    {{ form.as_ul }}
-    <input type="submit" value="Post">
-</form>
-
 {% for review in reviews.all %}
 <h4>{{ review.user.username }}  {{ review.score }}</h4>
 <p>{{ review.content }}</p>

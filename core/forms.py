@@ -17,9 +17,9 @@ class CustomUserChangeForm(UserChangeForm):
 class NewItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ['name', 'topic', 'description', 'img_src', 'link', 'rating']
+        fields = ['name', 'topic', 'description', 'img_src', 'link']
 
 class NewReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ['user', 'content', 'score']
+        fields = ['content', 'score']

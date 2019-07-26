@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>Create a new item</h1>
-<form action="{% url 'core:create_item' %}" method="post">
+<form action="{% url 'core:item_create' %}" method="post">
     {% csrf_token %}
     {{ form.as_ul }}
     <input type="submit" value="Post">
