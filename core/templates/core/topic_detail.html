@@ -1,6 +1,14 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+{% include "core/navbar.html" %}
+
 <h1>{{ topic }}</h1>
 <ul>
 {% for item in topic.item_set.all %}
     <li><a href="{% url 'core:item_detail' item.id %}">{{ item }}</a></li>
 {% endfor %}
 </ul>
+
+{% endblock %}

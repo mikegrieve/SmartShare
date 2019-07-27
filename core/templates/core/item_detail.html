@@ -4,6 +4,8 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'core/item_detail.css' %}">
 
+{% include "core/navbar.html" %}
+
 <h2>{{ item }}</h1>
 
 <h3>Topic: {{ item.topic }}, Rating: {{ item.rating }}</h3>
