@@ -10,8 +10,10 @@ from .models import Topic, Item, Review
 
 def index(request):
     topic_list = Topic.objects.all()
+    item_list = Item.objects.all()
     context = {
         'topic_list': topic_list,
+        'item_list': item_list,
     }
     return render(request, 'core/index.html', context)
 

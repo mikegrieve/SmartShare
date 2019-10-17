@@ -20,6 +20,9 @@
 
 <h4>Reviews</h4>
 
+<a class="button" href="{% url 'core:item_review' item.id %}">Write a Review</a>
+<a class="button">Upvote</a>
+
 {% for review in reviews.all %}
 <h4>{{ review.user.username }}  {{ review.score }}</h4>
 <p>{{ review.content }}</p>

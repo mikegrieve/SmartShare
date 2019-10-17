@@ -4,14 +4,37 @@
 
 {% include "core/navbar.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'core/topics.css' %}">
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'core/index.css' %}"> -->
 
-{% if topic_list %}
-    {% for topic in topic_list %}
-        <a href="{% url 'core:topic_detail' topic.id %}">{{ topic }}</a><br>
-    {% endfor %}
-{% else %}
-    <p>No topics are available.</p>
-{% endif %}
+<div class="container">
+  <div class="columns is-centered">
+    <div class="column is-10">
+      <h1 class="title is-4">Top Rated</h1>
+        {% for item in item_list %}
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <a href="{% url 'core:item_detail' item.id%}">
+                  <img src="{{item.img_src}}" style="border: solid 1px black;">
+                </a>
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>{{item.name}}</strong> <small>author</small> <a href="{% url 'core:topic_detail' item.topic.id %}">{{item.topic}}</a>
+                  <br>
+                  <span class="item-description">{{item.description}}</span>
+                  <br>
+                  <small>Upvotes: {{item.up_votes}}</small>
+                </p>
+              </div>
+            </div>          
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

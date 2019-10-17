@@ -2,6 +2,8 @@
 {% load static %}
 {% block content %}
 
+{% include "core/navbar.html" %}
+
 <h1>Write a review</h1>
 
 <form action="{% url 'core:item_review' item.id %}" method="post">

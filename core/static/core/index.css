@@ -1,0 +1,15 @@
+
+.item-container {
+}
+
+.item-img {
+    border: solid 1px black;
+    width: 60px;
+}
+
+.item-description {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100px;
+    height: 50px;
+}

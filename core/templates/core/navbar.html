@@ -1,63 +1,45 @@
-<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/navbar.css' %}">
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="{% url 'core:index' %}">
+        <a class="navbar-item title is-4" href="{% url 'core:index' %}">
+            <i class="fas fa-book-reader"></i>
             SmartShare
         </a>
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
     </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item">
-                Topics
-            </a>
-
-            <a class="navbar-item" href="{% url 'core:item_create' %}">
-                Post
-            </a>
-
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                More
-                </a>
-
+                <a id="nav-link" class="navbar-link">Topics</a>
+                {% if topic_list %}
                 <div class="navbar-dropdown">
-                <a class="navbar-item">
-                    About
-                </a>
-                <a class="navbar-item">
-                    Jobs
-                </a>
-                <a class="navbar-item">
-                    Contact
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">
-                    Report an issue
-                </a>
+                    {% for topic in topic_list %}
+                    <a href="{% url 'core:topic_detail' topic.id %}" class="navbar-item">{{ topic }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a id="nav-link" class="navbar-link">Type</a>
+                <div class="navbar-dropdown">
+                    <a href="" class="navbar-item">Book</a>
+                    <a href="" class="navbar-item">Video</a>
+                    <a href="" class="navbar-item">Website</a>
+                    <a href="" class="navbar-item">Physical</a>
                 </div>
             </div>
+            <a class="navbar-item" href="{% url 'core:item_create' %}">Post</a>
         </div>
-
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    {% if user.is_authenticated %}
-                    <a class="button is-primary" href="{% url 'logout' %}">
-                        <strong>Logout</strong>
-                    </a>
-                    {% else %}
-                    <a class="button is-primary" href="{% url 'core:signup' %}">
-                        <strong>Sign up</strong>
-                    </a>
-                    <a class="button is-light" href="{% url 'login' %}">
-                        Log in
-                    </a>
-                    {% endif %}
+                {% if user.is_authenticated %}
+                    <a class="button is-primary" href="{% url 'logout' %}"><strong>Logout</strong></a>
+                {% else %}
+                    <a class="button is-primary" href="{% url 'core:signup' %}"><strong>Sign up</strong></a>
+                    <a class="button is-light" href="{% url 'login' %}">Log in</a>
+                {% endif %}
                 </div>
             </div>
         </div>

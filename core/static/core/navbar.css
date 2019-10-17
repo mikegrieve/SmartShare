@@ -1,0 +1,40 @@
+.navbar {
+    margin-bottom: 20px;
+    background-color: #475e82;
+    color: white;
+}
+
+.fa-book-reader {
+    margin: 6px;
+}
+
+.navbar-item {
+    color: white;
+}
+
+a.navbar-item:hover {
+    color: white;
+    background-color: #475e82;
+}
+
+.navbar-link {
+    color: white;
+}
+
+.navbar-item.has-dropdown:hover {
+    color: white;
+    background-color: #475e82;
+}
+
+#nav-link {
+    color: inherit;
+    background-color: inherit;
+}
+
+.navbar-dropdown > .navbar-item {
+    color: black
+}
+
+a#nav-link.navbar-link::after {
+    
+}
